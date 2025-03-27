@@ -3,8 +3,7 @@ package main
 import "fmt"
 
 func Swap(a, b *int) {
-	temp := 0
-	temp = *b
+	temp := *b
 	*b = *a
 	*a = temp
 }
