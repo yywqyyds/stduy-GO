@@ -19,15 +19,18 @@ func main() {
 	}
 	defer file.Close()
 
+	playCount := 0
 	if stat, _ := file.Stat(); stat.Size() == 0 {
 		file.WriteString("游戏记录\n")
-		file.WriteString("时间 | 难度 | 猜测次数 | 结果 | 用时 | 正确答案\n")
+		file.WriteString("游戏次数 | 游戏开始时间 | 游戏结束时间 | 难度 | 猜测次数 | 结果 | 用时 | 正确答案\n")
 	}
 
 	// 设置随机种子
 	rand.Seed(time.Now().UnixNano())
 
 	for {
+		playCount++
+		startTime := time.Now()
 		var number = rand.Intn(100) + 1
 		difflevel := map[int]int{
 			1: 10,
@@ -51,7 +54,6 @@ func main() {
 
 		guessTimes := difflevel[difficulty]
 		var guessNumber int
-		startTime := time.Now()
 		flag := false
 		var attempt int
 		var record string
@@ -77,8 +79,8 @@ func main() {
 				guessNumberTime := time.Since(startTime)
 				fmt.Printf("恭喜您猜对了！您在第%d次猜测中成功。用时%.1f秒。\n", i, guessNumberTime.Seconds())
 				flag = true
-				record = fmt.Sprintf("[%s] | 难度%d | %d次 | 成功 | %.1f秒 | 答案:%d\n",
-					time.Now().Format("2006-01-02 15:04:05"), difficulty, i, guessNumberTime.Seconds(), number)
+				record = fmt.Sprintf("%d | %s | [%s] | 难度%d | %d次 | 成功 | %.1f秒 | 答案:%d\n",
+					playCount, startTime.Format("2006-01-02 15:04:05"), time.Now().Format("2006-01-02 15:04:05"), difficulty, i, guessNumberTime.Seconds(), number)
 				break
 			}
 		}
@@ -86,8 +88,8 @@ func main() {
 		if !flag {
 			guessNumberTime := time.Since(startTime)
 			fmt.Printf("很可惜您没有在规定的次数内猜对数字,用时%.1f秒,正确答案是%d,游戏结束,您可以退出或者重新开始。\n", guessNumberTime.Seconds(), number)
-			record = fmt.Sprintf("[%s] | 难度%d | %d次 | 失败 | %.1f秒 | 正确答案:%d\n",
-				time.Now().Format("2006-01-02 15:04:05"), difficulty, attempt, guessNumberTime.Seconds(), number)
+			record = fmt.Sprintf("%d | %s | [%s] | 难度%d | %d次 | 失败 | %.1f秒 | 正确答案:%d\n",
+				playCount, startTime.Format("2006-01-02 15:04:05"), time.Now().Format("2006-01-02 15:04:05"), difficulty, attempt, guessNumberTime.Seconds(), number)
 		}
 
 		if _, err := file.WriteString(record); err != nil {
