@@ -1,0 +1,53 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30vh;
+  margin: 0;
+}
+
+.card{
+  background-color: #fff;
+  width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30vh;
+  margin: 0;
+}
+
+.avatar img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+.info h1 {
+  font-size: 24px;
+  margin: 0;
+  font-weight: bold;
+}
+
+.info p {
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+.gender, .profession, .contact {
+  color: #666;
+}
+
+.gender {
+  font-style: italic;
+}
+
+.profession {
+  color: #333;
+}
+
+.contact {
+  color: #007BFF;
+}

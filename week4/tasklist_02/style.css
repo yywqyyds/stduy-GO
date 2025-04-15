@@ -1,0 +1,87 @@
+/* Style.css */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+}
+
+.todo-container {
+  width: 400px;
+  background-color: #f4f4f4;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  text-align: center;
+  color: #4caf50;
+}
+
+input, button {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  font-size: 16px;
+}
+
+button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px;
+  margin: 5px 0;
+  background-color: #fff;
+  border-radius: 4px;
+}
+
+.completed {
+  text-decoration: line-through;
+  color: #888;
+}
+
+.theme-toggle {
+  margin-bottom: 20px;
+}
+
+/* Dark theme styles */
+body.dark-mode {
+  background-color: #333;
+  color: #fff;
+}
+
+.todo-container.dark-mode {
+  background-color: #444;
+}
+
+button.dark-mode {
+  background-color: #222;
+  color: #fff;
+}
+
+input.dark-mode, button.dark-mode {
+  background-color: #666;
+  color: white;
+}

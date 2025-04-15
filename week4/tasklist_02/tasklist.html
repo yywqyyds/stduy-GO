@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo List</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    let taskList = [];
+    function addTask(){
+      const taskInput = document.getElementById("task-input");
+      const taskText = taskInput.value.trim()
+      if(taskText === "") return;
+      const task = {
+        text:taskText,
+        completed: false,
+        createIime: new Data().toLocaleString()
+      };
+      taskList.push(task);
+      task.taskInput.value = "";
+      renderTask();
+    }
+
+    function renderTasks() {
+    const taskListElement = document.getElementById("task-list");
+    taskListElement.innerHTML = "";
+
+    taskList.forEach((task, index) => {
+        const taskElement = document.createElement("li");
+        taskElement.classList.add(task.completed ? "completed" : "");
+
+        taskElement.innerHTML = `
+            <span>${task.text}</span>
+            <span>${task.time}</span>
+            <button onclick="toggleComplete(${index})">✔</button>
+            <button onclick="deleteTask(${index})">🗑️</button>
+        `;
+        taskListElement.appendChild(taskElement);
+    });
+  } 
+
+
+    function toggleComplete(index){
+      taskList[index].completed = !taskList[index].completed;
+      renderTask();
+    }
+
+    function deleteTask(index){
+      taskList.splice(index,1);
+      renderTask();
+    }
+
+    function toggleTheme(){
+      document.body.classList.toggle("dark=mode");
+      document.querySelector(".todo-container").classList.toggle("dark=mode");
+      document.querySelectorAll("button").forEach(button =>{
+        button.classList.toggle("dark=mode");
+      });
+    }
+
+  </script>
+</head>
+<body>
+  <div class="todo-container">
+    <h1 class="title">Todo List</h1>
+    <input type="text" id="task-input" placeholder="What needs to be done?"/>
+    <button id="add-task" onclick="addTask()">Add Task</button>
+    <ul id="task-list">
+
+    </ul>
+    <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+  </div>
+</body>
+</html>
