@@ -126,8 +126,8 @@ func main() {
 	start := time.Now()
 
 	files := []string{
-		"json/english-vocabulary/json/3-CET4-顺序.json",
-		"json/english-vocabulary/json/4-CET6-顺序.json",
+		"json/3-CET4-顺序.json",
+		"json/4-CET6-顺序.json",
 	}
 
 	//打开并读取文件内容
