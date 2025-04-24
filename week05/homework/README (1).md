@@ -96,7 +96,6 @@ data/
 
 - Go 1.20+
 - Gin Web Framework
-- modernc.org/sqlite（如果需要持久化到 DB）
 - openai-go SDK （用于兼容阿里百炼）
 
 ---
@@ -104,6 +103,7 @@ data/
 ## 🚀 快速运行
 
 ```bash
+go mod tidy
 go run main.go
 ```
 
