@@ -47,9 +47,9 @@ func GenerateHandler(c *gin.Context) {
 	var req GenerateRequest
 	if err := c.ShouldBind(&req); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
-			"code":  -1,
-			"msg":   "请求参数错误",
-			"aiRes": nil,
+			"code": -1,
+			"msg":  "请求参数错误",
+			"data": nil,
 		})
 		return
 	}
@@ -57,9 +57,9 @@ func GenerateHandler(c *gin.Context) {
 	language := strings.ToLower(req.Language)
 	if !supportedLanguages[language] {
 		c.JSON(http.StatusBadRequest, gin.H{
-			"code":  -2,
-			"msg":   "不支持的语言类型",
-			"aiRes": nil,
+			"code": -2,
+			"msg":  "不支持的语言类型",
+			"data": nil,
 		})
 		return
 	}
@@ -67,9 +67,9 @@ func GenerateHandler(c *gin.Context) {
 	qType, ok := typeMap[req.Type]
 	if !ok {
 		c.JSON(http.StatusBadRequest, gin.H{
-			"code":  -3,
-			"msg":   "不支持的题型类型",
-			"aiRes": nil,
+			"code": -3,
+			"msg":  "不支持的题型类型",
+			"data": nil,
 		})
 		return
 	}
@@ -77,9 +77,9 @@ func GenerateHandler(c *gin.Context) {
 	qModel, ok := typeModel[req.Model]
 	if !ok {
 		c.JSON(http.StatusBadRequest, gin.H{
-			"code":  -4,
-			"msg":   "不支持的大模型类型",
-			"aiRes": nil,
+			"code": -4,
+			"msg":  "不支持的大模型类型",
+			"data": nil,
 		})
 		return
 	}
@@ -87,9 +87,9 @@ func GenerateHandler(c *gin.Context) {
 	result, err := service.CallLLM(qModel, req.Language, req.Keyword, qType)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
-			"code":  -5,
-			"msg":   err.Error(),
-			"aiRes": nil,
+			"code": -5,
+			"msg":  err.Error(),
+			"data": nil,
 		})
 		return
 	}
@@ -104,9 +104,9 @@ func GenerateHandler(c *gin.Context) {
 	f, err := os.OpenFile(filePath, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
-			"code":  -6,
-			"msg":   "写入文件失败",
-			"aiRes": nil,
+			"code": -6,
+			"msg":  "写入文件失败",
+			"data": nil,
 		})
 		return
 	}
@@ -116,8 +116,8 @@ func GenerateHandler(c *gin.Context) {
 	encoded, _ := json.Marshal(result)
 	f.Write(append(encoded, '\n'))
 	c.JSON(http.StatusOK, gin.H{
-		"code":  0,
-		"msg":   "",
-		"aiRes": result,
+		"code": 0,
+		"msg":  "",
+		"data": result,
 	})
 }
