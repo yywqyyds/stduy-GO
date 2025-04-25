@@ -34,50 +34,64 @@ func findPrimes(start, end int, out chan int, wg *sync.WaitGroup) {
 
 func main() {
 	if len(os.Args) < 3 {
-		fmt.Println("输入：go run main.go start end")
+		fmt.Println("用法：go run main.go start end")
 		return
 	}
+
 	startIn, err1 := strconv.Atoi(os.Args[1])
 	endIn, err2 := strconv.Atoi(os.Args[2])
 	if err1 != nil || err2 != nil || startIn > endIn {
-		fmt.Println("输入参数错误,请输入两个整数且start<=end")
+		fmt.Println("参数错误：请输入两个整数，且 start <= end")
 		return
 	}
 
-	startTime := time.Now() //记录开始时间
+	runPrimeFinder(startIn, endIn)
+}
+
+func runPrimeFinder(startIn, endIn int) {
+	startTime := time.Now()
 
 	threads := 4
-	step := (endIn - startIn + 1) / threads
+	total := endIn - startIn + 1
+	step := total / threads
+	if step == 0 {
+		step = 1
+	}
 
-	//创建通道用于传递素数
 	resultChan := make(chan int, 1000)
 	var wg sync.WaitGroup
 
-	//启动4个协程并发查找素数
 	for i := 0; i < threads; i++ {
-		start := startIn + i*step + 1
-		end := startIn + (i+1)*step
-		if i == threads-1 {
+		start := startIn + i*step
+		end := startIn + (i+1)*step - 1
+		if start > endIn {
+			break
+		}
+		if end > endIn {
 			end = endIn
 		}
 		wg.Add(1)
 		go findPrimes(start, end, resultChan, &wg)
 	}
 
-	//启动一个协程关闭通道（等所有任务完成）
 	go func() {
 		wg.Wait()
 		close(resultChan)
 	}()
 
-	count := 0
+	primes := []int{}
 	for p := range resultChan {
-		fmt.Fprintln(file, p)
-		count++
+		primes = append(primes, p)
 	}
 
-	//写入文件
-	fileName := fmt.Sprintf("prime_%d_%d.txt", startIn, endIn)
+	elapsed := time.Since(startTime).Milliseconds()
+
+	if len(primes) == 0 {
+		fmt.Printf("未找到素数。用时：%d 毫秒\n", elapsed)
+		return
+	}
+
+	fileName := fmt.Sprintf("prime_results_%d_%d.txt", startIn, endIn)
 	file, err := os.Create(fileName)
 	if err != nil {
 		fmt.Println("创建文件失败:", err)
@@ -85,6 +99,9 @@ func main() {
 	}
 	defer file.Close()
 
-	elapased := time.Since(startTime).Seconds()
-	fmt.Printf("一共找到了%d个素数,用时：%.2f\n", count, elapased)
+	for _, p := range primes {
+		fmt.Fprintln(file, p)
+	}
+
+	fmt.Printf("一共找到了 %d 个素数，耗时 %d 毫秒，已写入 %s\n", len(primes), elapsed, fileName)
 }
