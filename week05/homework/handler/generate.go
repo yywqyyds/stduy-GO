@@ -3,6 +3,7 @@ package handler
 
 import (
 	"encoding/json"
+	"fmt"
 	"homework/service"
 	"net/http"
 	"os"
@@ -54,6 +55,15 @@ func GenerateHandler(c *gin.Context) {
 		return
 	}
 
+	// 设置默认 model 和 language
+	if strings.TrimSpace(req.Model) == "" {
+		req.Model = "tongyi"
+	}
+	if strings.TrimSpace(req.Language) == "" {
+		req.Language = "go"
+	}
+
+	fmt.Println(req.Language, req.Keyword, req.Model, req.Type)
 	language := strings.ToLower(req.Language)
 	if !supportedLanguages[language] {
 		c.JSON(http.StatusBadRequest, gin.H{
