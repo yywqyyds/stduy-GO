@@ -60,13 +60,17 @@ func GenerateHandler(c *gin.Context) {
 		return
 	}
 
+	// 设置默认 model 和 language
+	if strings.TrimSpace(req.Model) == "" {
+		req.Model = "tongyi"
+	}
 	qModel, ok := typeModel[req.Model]
 	if !ok {
 		c.JSON(http.StatusBadRequest, gin.H{"code": -4, "msg": "不支持的大模型类型"})
 		return
 	}
 
-	questions, err := service.CallLLM(qModel, language, req.Keyword, req.Difficulty, qType, req.Count)
+	questions, err := service.CallLLM(qModel, req.Language, req.Keyword, req.Difficulty, qType, req.Count)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"code": -5, "msg": err.Error()})
 		return

@@ -9,9 +9,10 @@
 | `/api/questions/generate`     | POST   | 调用大模型生成题目（不保存） |
 | `/api/questions/save`         | POST   | 保存生成的题目到数据库      |
 | `/api/questions/list`         | GET    | 获取题库列表（支持筛选分页） |
-| `/api/questions/delete/:id`   | DELETE | 删除单个题目               |
-| `/api/questions/batch-delete` | POST   | 批量删除题目               |
-
+| `/api/questions/delete/:id`   | DELETE | 删除题目               |       
+| `/api/questions/modify/:id`   | POST   | 修改题目          |  
+| `/api/questions/query/:id `     | GET    | 获取题目 |
+| `/api/questions/type `        | GET    | 获取题型 |
 ---
 
 ## 1. 生成题目（不保存）
