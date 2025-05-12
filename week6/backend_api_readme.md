@@ -11,7 +11,7 @@
 | `/api/questions/list`         | GET    | 获取题库列表（支持筛选分页） |
 | `/api/questions/delete/:id`   | DELETE | 删除题目               |       
 | `/api/questions/modify/:id`   | POST   | 修改题目          |  
-| `/api/questions/query/:id `     | GET    | 获取题目 |
+| `/api/questions/query/:id `   | GET    | 获取题目 |
 | `/api/questions/type `        | GET    | 获取题型 |
 ---
 

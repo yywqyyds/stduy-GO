@@ -23,6 +23,7 @@ func InitDB() {
         language TEXT,
         type INTEGER,
         keyword TEXT,
+        difficulty TEXT,
         question TEXT,
         options TEXT,
         answer TEXT,

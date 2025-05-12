@@ -12,7 +12,7 @@ import (
 )
 
 // QueryQuestionHandler handles GET /api/questions/query/:id
-func QueryQuestionHandler(c *gin.Context) {
+func QueryQuestionsHandler(c *gin.Context) {
 	idStr := c.Param("id")
 	id, err := strconv.Atoi(idStr)
 	if err != nil || id <= 0 {

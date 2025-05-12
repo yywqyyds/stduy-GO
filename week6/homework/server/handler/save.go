@@ -35,10 +35,10 @@ func SaveQuestionsHandler(c *gin.Context) {
 
 	stmt, err := tx.Prepare(`
 		INSERT INTO questions (
-			model, language, type, keyword,
+			model, language, type, keyword, difficulty,
 			question, options, answer, explanation,
 			ai_start_time, ai_end_time, ai_cost_time
-		) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+		) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
 	`)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "failed to prepare statement"})
@@ -51,7 +51,7 @@ func SaveQuestionsHandler(c *gin.Context) {
 		answerJSON, _ := json.Marshal(q.AiRes.Answer)
 
 		_, err := stmt.Exec(
-			q.AiReq.Model, q.AiReq.Language, q.AiReq.Type, q.AiReq.Keyword,
+			q.AiReq.Model, q.AiReq.Language, q.AiReq.Type, q.AiReq.Keyword, q.AiReq.Difficulty,
 			q.AiRes.Title, string(optionsJSON), string(answerJSON), q.AiRes.Explanation,
 			q.AiStartTime, q.AiEndTime, q.AiCostTime,
 		)

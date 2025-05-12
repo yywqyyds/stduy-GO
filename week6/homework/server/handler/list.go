@@ -8,68 +8,50 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// GetQuestionsHandler 获取题目列表接口
+type SimpleQuestion struct {
+	Question   string `json:"question"`
+	Type       int    `json:"type"`
+	Difficulty string `json:"difficulty"`
+}
+
+// GetQuestionsHandler 获取题目列表（仅返回题干、题型、难度）
 func GetQuestionsHandler(c *gin.Context) {
-	typeParam := c.Query("type")  // 题型筛选（1=单选，2=多选，3=编程）
-	keyword := c.Query("keyword") // 题干关键词模糊搜索
+	typeParam := c.Query("type") // 题型筛选
 	limit := c.DefaultQuery("limit", "20")
 	offset := c.DefaultQuery("offset", "0")
 
-	// 构建查询 SQL
-	baseSQL := `SELECT id, model, language, type, keyword, question, options, answer, explanation, ai_start_time, ai_end_time, ai_cost_time FROM questions`
-	where := []string{}
+	query := `SELECT question, type, difficulty FROM questions`
+	conditions := []string{}
 	args := []interface{}{}
 
 	if typeParam != "" {
-		where = append(where, "type = ?")
+		conditions = append(conditions, "type = ?")
 		args = append(args, typeParam)
 	}
-	if keyword != "" {
-		where = append(where, "question LIKE ?")
-		args = append(args, "%"+keyword+"%")
+	if len(conditions) > 0 {
+		query += " WHERE " + strings.Join(conditions, " AND ")
 	}
-
-	if len(where) > 0 {
-		baseSQL += " WHERE " + strings.Join(where, " AND ")
-	}
-	baseSQL += " ORDER BY id DESC LIMIT ? OFFSET ?"
+	query += " ORDER BY id DESC LIMIT ? OFFSET ?"
 	args = append(args, limit, offset)
 
-	rows, err := db.DB.Query(baseSQL, args...)
+	rows, err := db.DB.Query(query, args...)
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"code": -1, "msg": "数据库查询失败", "data": nil})
+		c.JSON(http.StatusInternalServerError, gin.H{"code": -1, "msg": "数据库查询失败"})
 		return
 	}
 	defer rows.Close()
 
-	// 构造响应结构
-	type Question struct {
-		ID          int    `json:"id"`
-		Model       string `json:"model"`
-		Language    string `json:"language"`
-		Type        int    `json:"type"`
-		Keyword     string `json:"keyword"`
-		Question    string `json:"question"`
-		Options     string `json:"options"`
-		Answer      string `json:"answer"`
-		Explanation string `json:"explanation"`
-		StartTime   string `json:"ai_start_time"`
-		EndTime     string `json:"ai_end_time"`
-		CostTime    int    `json:"ai_cost_time"`
-	}
-
-	var questions []Question
+	var list []SimpleQuestion
 	for rows.Next() {
-		var q Question
-		err := rows.Scan(&q.ID, &q.Model, &q.Language, &q.Type, &q.Keyword, &q.Question, &q.Options, &q.Answer, &q.Explanation, &q.StartTime, &q.EndTime, &q.CostTime)
-		if err == nil {
-			questions = append(questions, q)
+		var q SimpleQuestion
+		if err := rows.Scan(&q.Question, &q.Type, &q.Difficulty); err == nil {
+			list = append(list, q)
 		}
 	}
 
 	c.JSON(http.StatusOK, gin.H{
 		"code": 0,
 		"msg":  "",
-		"data": questions,
+		"data": list,
 	})
 }

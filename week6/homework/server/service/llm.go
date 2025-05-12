@@ -75,10 +75,12 @@ func CallLLM(modelOverride, lang, keyword, difficulty, Type string, count int) (
 			AiEndTime:   end.Format(time.RFC3339),
 			AiCostTime:  int(duration.Milliseconds()),
 			AiReq: schema.AiRequest{
-				Model:    modelName,
-				Language: lang,
-				Type:     typeMap[Type],
-				Keyword:  keyword,
+				Model:      modelName,
+				Language:   lang,
+				Type:       typeMap[Type],
+				Keyword:    keyword,
+				Count:      count,
+				Difficulty: difficulty,
 			},
 			AiRes: singleResp,
 		}
