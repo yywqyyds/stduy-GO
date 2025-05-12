@@ -1,0 +1,494 @@
+{
+  [
+    {
+      "children": "金山考试 - 武汉科技大学第2次课课后练习"
+    }
+  ],
+  [
+    "$",
+    "$Ld",
+    null,
+    {
+      "myData": {
+        "code": 1,
+        "data": {
+          "exam_id": "57759bb2-027c-4256-b35e-93219b9f55e5",
+          "uuid": "57759bb2-027c-4256-b35e-93219b9f55e5",
+          "student": {
+            "id": 2576,
+            "wps_id": 306032790,
+            "name": "宋浩沅",
+            "school": "9",
+            "mobile": "15107241447",
+            "education": 2,
+            "date_of_birth": "$D2000-05-09T16:00:00.000Z",
+            "graduationYear": 2026,
+            "techDirection": 1,
+            "schoolNumber": "202313704107",
+            "from": 2,
+            "classStatus": 1,
+            "status": 1,
+            "active": 1,
+            "ext1": null,
+            "ext2": null,
+            "channelId": null
+          },
+          "exam": {
+            "id": 539,
+            "uuid": "57759bb2-027c-4256-b35e-93219b9f55e5",
+            "title": "武汉科技大学第2次课课后练习"
+          },
+          "score": 105,
+          "comment": null,
+          "passStatus": 0,
+          "paper": [
+            {
+              "question": {
+                "id": 5504,
+                "name": "以下哪个声明正确地使用了Go语言的map类型？",
+                "type": 1,
+                "content": "{"content":"","options":[{"content":"map[string
+                ]int = {
+                  "one": 1,
+                  "two": 2
+                }"},{"content":"var myMap map[string
+                ]int = make(map[string
+                ]int)"},{"content":"myMap := map[int
+                ]string{
+                  1: "one",
+                  2: "two"
+                }"},{"content":"newMap := map[
+                  "string"
+                ]int"}]}",
+                "tech_stack": 2,
+                "maxScore": 5,
+                "correctAnswer": "B"
+              },
+              "answer": "C",
+              "score": 0,
+              "language": null
+            },
+            {
+              "question": {
+                "id": 5503,
+                "name": "Unicode和UTF-8之间的关系是什么？",
+                "type": 1,
+                "content": "{"content":"","options":[{"content":"Unicode是一种字符集，UTF-8是Unicode的一种编码方式"},{"content":"Unicode和UTF-8都是编程语言"},{"content":"UTF-8是一种字符集，Unicode是UTF-8的一种编码方式"},{"content":"没有任何关系"}]}",
+                "tech_stack": 2,
+                "maxScore": 5,
+                "correctAnswer": "A"
+              },
+              "answer": "A",
+              "score": 5,
+              "language": null
+            },
+            {
+              "question": {
+                "id": 5502,
+                "name": "关于map，下面说法正确的是？",
+                "type": 1,
+                "content": "{"options":[{"content":"map 反序列化时 json.unmarshal() 的入参必须为map的地址；"},{"content":"在函数调用中传递 map，则子函数中对 map 元素的增加不会导致父函数中 map 的修改；"},{"content":"不能使用内置函数 delete() 删除 map 的元素；"},{"content":"以上都不对"}],"content":""}",
+                "tech_stack": 2,
+                "maxScore": 5,
+                "correctAnswer": "A"
+              },
+              "answer": "A",
+              "score": 5,
+              "language": null
+            },
+            {
+              "question": {
+                "id": 5501,
+                "name": "下面这段代码输出什么？",
+                "type": 1,
+                "content": "{"options":[{"content":"[
+                  1 0 2 3
+                ]"},{"content":"[
+                  2 3 1
+                ]"},{"content":"[
+                  2 3 1 0
+                ]"},{"content":"[
+                  0 2 3 1
+                ]"}],"content":"```go
+                var x = []int{
+                  2: 2,
+                  3,
+                  0: 1
+                }
+                
+                func main() {n    fmt.Println(x)n
+                }
+                
+                ```
+                "}",
+                "tech_stack": 2,
+                "maxScore": 5,
+                "correctAnswer": "A"
+              },
+              "answer": "A",
+              "score": 5,
+              "language": null
+            },
+            {
+              "question": {
+                "id": 5500,
+                "name": "关于整型切片的初始化，下面正确的是？",
+                "type": 2,
+                "content": "{"options":[{"content":"s := make([]int)"},{"content":"s := make([]int,
+                0)"},{"content":"s := make([]int,
+                5,
+                10)"},{"content":"s := []int{
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                }"}],"content":""}",
+                "tech_stack": 2,
+                "maxScore": 5,
+                "correctAnswer": "BCD"
+              },
+              "answer": "B,C,D",
+              "score": 5,
+              "language": null
+            },
+            {
+              "question": {
+                "id": 5499,
+                "name": "下面这段代码正确的输出是什么？",
+                "type": 1,
+                "content": "{"options":[{"content":"F M D"},{"content":"D F M"},{"content":"F D M"},{"content":"以上都不对"}],"content":"```gonfunc f() {n    defer fmt.Println("D")n    fmt.Println("F")n
+                }nnfunc main() {n    f()n    fmt.Println("M")n
+                }n```n"}",
+                "tech_stack": 2,
+                "maxScore": 5,
+                "correctAnswer": "C"
+              },
+              "answer": "C",
+              "score": 5,
+              "language": null
+            },
+            {
+              "question": {
+                "id": 5498,
+                "name": "下面代码输出什么？",
+                "type": 1,
+                "content": "{"options":[{"content":"hello"},{"content":"xello"},{"content":"compilation error"},{"content":"其他"}],"content":"```gonfunc main() {n    str := "hello"n    str[
+                    0
+                  ] = 'x'n    fmt.Println(str)n
+                }nn```n"}",
+                "tech_stack": 2,
+                "maxScore": 5,
+                "correctAnswer": "C"
+              },
+              "answer": "C",
+              "score": 5,
+              "language": null
+            },
+            {
+              "question": {
+                "id": 5497,
+                "name": "下面这段代码输出什么？",
+                "type": 1,
+                "content": "{"options":[{"content":"runtime panic"},{"content":"0"},{"content":"compilation error"},{"content":"其他"}],"content":"```gonfunc main() {  n    s := make(map[string
+                  ]int)n    delete(s,
+                  "h")n    fmt.Println(s[
+                    "h"
+                  ])n
+                }n```n"}",
+                "tech_stack": 2,
+                "maxScore": 5,
+                "correctAnswer": "B"
+              },
+              "answer": "B",
+              "score": 5,
+              "language": null
+            },
+            {
+              "question": {
+                "id": 5496,
+                "name": "下面这段代码输出什么？",
+                "type": 1,
+                "content": "{"options":[{"content":"compilation error"},{"content":"equal"},{"content":"not equal"},{"content":"其他"}],"content":"```gonnfunc main() {n    a := [
+                    2
+                  ]int{
+                    5,
+                    6
+                  }n    b := [
+                    2
+                  ]int{
+                    5,
+                    6
+                  }n    if a == b {n        fmt.Println("equal")n
+                  } else {n        fmt.Println("not equal")n
+                  }n
+                }n```n"}",
+                "tech_stack": 2,
+                "maxScore": 5,
+                "correctAnswer": "B"
+              },
+              "answer": "B",
+              "score": 5,
+              "language": null
+            },
+            {
+              "question": {
+                "id": 5495,
+                "name": "下面这段代码输出什么？",
+                "type": 1,
+                "content": "{"options":[{"content":"13.1"},{"content":"13"},{"content":"compilation error"},{"content":"其他"}],"content":"```gonfunc main() {  n    a := 5n    b := 8.1n    fmt.Println(a + b)n
+                }n```n"}",
+                "tech_stack": 2,
+                "maxScore": 5,
+                "correctAnswer": "C"
+              },
+              "answer": "C",
+              "score": 5,
+              "language": null
+            },
+            {
+              "question": {
+                "id": 5494,
+                "name": "下面这段代码输出什么以及原因？",
+                "type": 1,
+                "content": "{"options":[{"content":"nil"},{"content":"not nil"},{"content":"compilation error"},{"content":"报错"}],"content":"```languagenfunc hello() []string {  n     return niln
+                }nn func main() {  n     h := hellon     if h == nil {n         fmt.Println("nil")n
+                  } else {n        fmt.Println("not nil")n
+                  }n
+                }n```n"}",
+                "tech_stack": 2,
+                "maxScore": 5,
+                "correctAnswer": "B"
+              },
+              "answer": "A",
+              "score": 0,
+              "language": null
+            },
+            {
+              "question": {
+                "id": 5493,
+                "name": "通过指针变量 p 访问其成员变量 name，有哪几种方式？",
+                "type": 2,
+                "content": "{"options":[{"content":"p.name"},{"content":"(u0026p).name"},{"content":"(*p).name"},{"content":"p-u003ename"}],"content":""}",
+                "tech_stack": 2,
+                "maxScore": 5,
+                "correctAnswer": "AC"
+              },
+              "answer": "A,C",
+              "score": 5,
+              "language": null
+            },
+            {
+              "question": {
+                "id": 5492,
+                "name": "以下代码片段的输出结果是什么？",
+                "type": 1,
+                "content": "{"options":[{"content":"0 1 2 4"},{"content":"0 1 2 3 4"},{"content":"0 1 2 3"},{"content":"3 4"}],"content":"```languagenfor i := 0; i u003c 5; i++ {n    if i == 3 {n        continuen
+                  }n    fmt.Println(i)n
+                }n```n"}",
+                "tech_stack": 2,
+                "maxScore": 5,
+                "correctAnswer": "A"
+              },
+              "answer": "A",
+              "score": 5,
+              "language": null
+            },
+            {
+              "question": {
+                "id": 5491,
+                "name": "有以下结构体和方法。调用 IncreasePages 方法后，原始的 Book 结构体实例的 Pages 字段会",
+                "type": 1,
+                "content": "{"options":[{"content":"增加"},{"content":"不变"},{"content":"减少"},{"content":"不确定"}],"content":"```languagentype Book struct {n    Title stringn    Pages intn
+                }nnfunc (b *Book) IncreasePages(num int) {n    b.Pages += numn
+                }n```n"}",
+                "tech_stack": 2,
+                "maxScore": 5,
+                "correctAnswer": "A"
+              },
+              "answer": "A",
+              "score": 5,
+              "language": null
+            },
+            {
+              "question": {
+                "id": 5490,
+                "name": "以下结构体方法定义中，使用指针接收者的原因通常是",
+                "type": 1,
+                "content": "{"options":[{"content":"方法内部需要修改结构体的字段值"},{"content":"为了提高性能"},{"content":"为了遵循代码规范"},{"content":"以上都是"}],"content":""}",
+                "tech_stack": 2,
+                "maxScore": 5,
+                "correctAnswer": "D"
+              },
+              "answer": "D",
+              "score": 5,
+              "language": null
+            },
+            {
+              "question": {
+                "id": 5489,
+                "name": "对于以下结构体和方法定义，调用 ChangeName 方法后，原始的 Person 结构体实例的 Name 字段会改变吗？",
+                "type": 1,
+                "content": "{"options":[{"content":"会"},{"content":"不会"},{"content":"不确定"},{"content":"以上都不对"}],"content":"```languagentype Person struct {n    Name stringn    Age  intn
+                }nnfunc (p Person) ChangeName(newName string) {n    p.Name = newNamen
+                }n```n"}",
+                "tech_stack": 2,
+                "maxScore": 5,
+                "correctAnswer": "B"
+              },
+              "answer": "B",
+              "score": 5,
+              "language": null
+            },
+            {
+              "question": {
+                "id": 5488,
+                "name": "以下创建一个空映射的方式正确的是",
+                "type": 1,
+                "content": "{"options":[{"content":"m := map[string
+                ]int{}"},{"content":"m := make(map[string
+                ]int)"},{"content":"m := new(map[string
+                ]int)"},{"content":"以上都正确"}],"content":""}",
+                "tech_stack": 2,
+                "maxScore": 5,
+                "correctAnswer": "B"
+              },
+              "answer": "B",
+              "score": 5,
+              "language": null
+            },
+            {
+              "question": {
+                "id": 5487,
+                "name": "要创建一个初始长度为 0，容量为 10 的整数切片，应该使用",
+                "type": 1,
+                "content": "{"options":[{"content":"new([]int)"},{"content":"make([]int,
+                0,
+                10)"},{"content":"new([
+                  10
+                ]int)"},{"content":"make([
+                  10
+                ]int)"}],"content":""}",
+                "tech_stack": 2,
+                "maxScore": 5,
+                "correctAnswer": "B"
+              },
+              "answer": "B",
+              "score": 5,
+              "language": null
+            },
+            {
+              "question": {
+                "id": 5486,
+                "name": "以下代码片段的输出结果是什么？",
+                "type": 1,
+                "content": "{"options":[{"content":"1"},{"content":"2"},{"content":"3"},{"content":"10"}],"content":"```gonslice1 := []int{
+                  1,
+                  2,
+                  3
+                }nslice2 := slice1nslice1[
+                  0
+                ] = 10nfmt.Println(slice2[
+                  0
+                ])nn```n"}",
+                "tech_stack": 2,
+                "maxScore": 5,
+                "correctAnswer": "D"
+              },
+              "answer": "D",
+              "score": 5,
+              "language": null
+            },
+            {
+              "question": {
+                "id": 5485,
+                "name": "以下代码片段的输出结果是什么？",
+                "type": 1,
+                "content": "{"options":[{"content":"2"},{"content":"3"},{"content":"4"},{"content":"5"}],"content":"```gonarr := [
+                  5
+                ]int{
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                }nslice := arr[
+                  1: 3
+                ]nfmt.Println(len(slice))n```n"}",
+                "tech_stack": 2,
+                "maxScore": 5,
+                "correctAnswer": "A"
+              },
+              "answer": "A",
+              "score": 5,
+              "language": null
+            },
+            {
+              "question": {
+                "id": 5484,
+                "name": "以下关于数组和切片的说法，正确的是",
+                "type": 1,
+                "content": "{"options":[{"content":"数组的长度可以动态改变，切片不行"},{"content":"切片的长度可以动态改变，数组不行"},{"content":"数组和切片的长度都可以动态改变"},{"content":"数组和切片的长度都不能动态改变"}],"content":""}",
+                "tech_stack": 2,
+                "maxScore": 5,
+                "correctAnswer": "B"
+              },
+              "answer": "B",
+              "score": 5,
+              "language": null
+            },
+            {
+              "question": {
+                "id": 5483,
+                "name": "在 Go 语言中，字符串转义使用的符号是？",
+                "type": 1,
+                "content": "{"options":[{"content":"@"},{"content":""},{"content":"/"},{"content":"#"}],"content":""}",
+                "tech_stack": 2,
+                "maxScore": 5,
+                "correctAnswer": "B"
+              },
+              "answer": "B",
+              "score": 5,
+              "language": null
+            },
+            {
+              "question": {
+                "id": 5482,
+                "name": "在 Go 语言中，判断 Map 中是否存在某个值，通常使用以下哪种方法？",
+                "type": 1,
+                "content": "{"options":[{"content":"遍历 Map"},{"content":"调用特定函数"},{"content":"随机查找"},{"content":"以上都不对"}],"content":""}",
+                "tech_stack": 2,
+                "maxScore": 5,
+                "correctAnswer": "A"
+              },
+              "answer": "B",
+              "score": 0,
+              "language": null
+            },
+            {
+              "question": {
+                "id": 5481,
+                "name": "在 Go 语言中，以下哪个是值类型？",
+                "type": 1,
+                "content": "{"options":[{"content":"数组"},{"content":"切片"},{"content":"映射"},{"content":"以上都不对"}],"content":""}",
+                "tech_stack": 2,
+                "maxScore": 5,
+                "correctAnswer": "A"
+              },
+              "answer": "A",
+              "score": 5,
+              "language": null
+            }
+          ],
+          "start_time": 1743080532000,
+          "exam_info": "{"switchCount":0,"switchContent":[],"copyCount":0,"copyContent":[],"pasteCount":0,"pasteContent":[],"consumeTime":"16分31秒"}",
+          "correct_id": null,
+          "correct_info": null,
+          "correct_name": null,
+          "correct_status": 2
+        },
+        "msg": "成功获取答卷!"
+      }
+    }
+  ]
+]n"])}

@@ -9,7 +9,7 @@ import (
 func SetupRouter() *gin.Engine {
 	r := gin.Default()
 
-	//路由注册
+	//调用大模型出题
 	r.POST("/api/questions/create", handler.GenerateHandler)
 
 	return r
