@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import QuestionManager from './pages/QuestionManager';
-import StudyPage from './pages/StudyPage';
+import { StudyPage } from './pages/StudyPage';
 
 import { Layout, Menu } from 'antd';
 
@@ -33,7 +33,7 @@ const App: React.FC = () => {
     <Router>
       <Layout style={{ minHeight: '100vh' }}>
       <Header style={{ display: 'flex', alignItems: 'center', background: '#001529' }}>
-        <img src="../public/logo.png" alt="logo" style={{ height: 32, marginRight: 12 }} />
+        <img src="public/logo.png" alt="logo" style={{ height: 32, marginRight: 12 }} />
         <span style={{ color: '#fff', fontSize: 18 }}>武汉科技大学 宋浩沅大作业</span>
       </Header>
         <Layout>

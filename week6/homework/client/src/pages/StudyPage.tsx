@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { Spin, Alert } from 'antd';
 
-const StudyPage: React.FC = () => {
+export const StudyPage: React.FC = () => {
   const [markdown, setMarkdown] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch('/docs/readme.md') 
+    fetch('../public/docs/readme.md')
       .then((res) => {
         if (!res.ok) {
           throw new Error(`HTTP error ${res.status}`);
@@ -34,5 +34,3 @@ const StudyPage: React.FC = () => {
     </div>
   );
 };
-
-export default StudyPage;

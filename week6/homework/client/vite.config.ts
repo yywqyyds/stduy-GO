@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => ({
   plugins: [react()],
-  base:mode === "production" ? "/static/" : "/",
+  base:mode === "production" ? "/public/" : "/",
   server: {
     proxy: {
       '/api': {
