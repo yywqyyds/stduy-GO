@@ -33,7 +33,7 @@ func CallLLM(modelOverride, lang, keyword, difficulty, Type string, count int) (
 	prompt := fmt.Sprintf(`
 	请生成%d道%s类型的题目，语言为 %s，关键词为 %s，难度为 %s。只能输出 JSON 格式，禁止添加 markdown 或说明性文字。字段包括：
 	question（题干）、options（选项 A/B/C/D）array类型、answer（正确答案）不管是单选题还是多选题都是array类型只包
-	含选项、explanation（解析），如果是编程题只有题干，不需要答案。必须按纯 JSON 返回。
+	含选项A/B/C/D不要其他值、explanation（解析），记住如果是题目类型是编程题只有题干，不需要答案和选项以及解析这个非常重要。所有返回必须按纯 JSON 返回，不要加任何说明，不要加 markdown 语法。。
 	`, count, Type, lang, keyword, difficulty)
 
 	client := openai.NewClient(
@@ -79,7 +79,6 @@ func CallLLM(modelOverride, lang, keyword, difficulty, Type string, count int) (
 				Language:   lang,
 				Type:       typeMap[Type],
 				Keyword:    keyword,
-				Count:      count,
 				Difficulty: difficulty,
 			},
 			AiRes: singleResp,
@@ -96,10 +95,11 @@ func CallLLM(modelOverride, lang, keyword, difficulty, Type string, count int) (
 				AiEndTime:   end.Format(time.RFC3339),
 				AiCostTime:  int(duration.Milliseconds()),
 				AiReq: schema.AiRequest{
-					Model:    modelName,
-					Language: lang,
-					Type:     typeMap[Type],
-					Keyword:  keyword,
+					Model:      modelName,
+					Language:   lang,
+					Type:       typeMap[Type],
+					Keyword:    keyword,
+					Difficulty: difficulty,
 				},
 				AiRes: item,
 			}

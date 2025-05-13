@@ -8,6 +8,10 @@ import (
 
 func SetupRouter() *gin.Engine {
 	r := gin.Default()
+	r.Static("/static", "./static")
+	r.NoRoute(func(c *gin.Context){
+		c.File("./static/index.html")
+	})
 
 	//调用大模型出题
 	r.POST("/api/questions/create", handler.GenerateHandler)
@@ -26,6 +30,8 @@ func SetupRouter() *gin.Engine {
 
 	//编辑题目
 	r.POST("/api/questions/modify/:id", handler.ModifyQuestionsHandler)
+
+
 
 	return r
 }

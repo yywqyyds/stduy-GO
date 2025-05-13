@@ -4,6 +4,7 @@ import (
 	"server/config"
 	"server/db"
 	"server/router"
+
 )
 
 func main() {
@@ -16,5 +17,6 @@ func main() {
 	//初始化路由并运行
 	r := router.SetupRouter()
 	r.Run(":8080")
+
 
 }
