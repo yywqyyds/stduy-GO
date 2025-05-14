@@ -65,7 +65,7 @@ const AiQuestionGenerator: React.FC = () => {
             </Select>
           </Form.Item>
 
-          <Form.Item label="关键词" name="keyword" rules={[{ required: true }]}>
+          <Form.Item label="关键词" name="keyword" >
                   <Input placeholder='请输入关键词，如gin,路由等' />
           </Form.Item>
 
